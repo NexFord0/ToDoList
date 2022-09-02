@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="static/assets/css/index.css">
+    <script src="static/assets/js/index.js"></script>
+</head>
+<body>
+    <main class="text-center">
+        <hr>
+        <section>
+            <h1>Todo List</h1>
+            <input type="text" id="input-add" placeholder="Enter your task">
+            <button id="btn-add" class="btn" onclick="add()">
+                <strong>
+                    Add
+                </strong>
+            </button>
+            <div class="color">
+                <br>
+            </div>
+        </section>
+        <hr>
+        <section>
+            <div id="list" class="text-left"></div>
+        </section>
+    </main>
+    <footer>
+<!--        <img src="static/images/todo.png" alt="todo">-->
+    </footer>
+    <script>
+        document.getElementById("btn-add").click();
+        // test();
+    </script>
+</body>
+</html>

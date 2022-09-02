@@ -1,0 +1,133 @@
+:root {
+    --primary: black;
+    --secondary: var(--light);
+    --blue: #1363be;
+    --light-blue: #c7e0e5;
+    --red: #d52e2e;
+    --light: #EEEEEE;
+    --green: #11a811;
+    --purple: #5c11cc;
+    --transparent: rgba(0, 0, 0, 0%);
+    --duo: linear-gradient(#e66465, #9198e5);
+}
+
+* {
+    animation-duration: 1s;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+main {
+    min-height: 100vh;
+    height: max-content;
+    padding-top: 10%;
+    background-color: #EEEEEE;
+    width: 80%;
+}
+section {
+    margin: 10px;
+    padding: 10px;
+    /*border: 2px solid var(--primary);*/
+}
+.hide {
+    display: none;
+}
+.text-center {
+    text-align: center;
+}
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+.right {
+    right: 0;
+}
+.min-x {
+    width: max-content;
+}
+.d-flex {
+    display: flex;
+}
+
+.border {
+    border: 2px solid;
+    border-radius: 10px;
+}
+
+input, button {
+    padding: 10px;
+    font-size: large;
+    border-radius: 10px;
+    border: solid ;
+}
+
+button {
+    --primary: var(--blue);
+    color: var(--primary);
+    background-color: var(--transparent);
+    border-color: var(--primary);
+    border: solid;
+}
+button:hover {
+    color: var(--secondary);
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+
+.trash {
+    --primary: var(--red);
+}
+
+.edit {
+     --primary: var(--green);
+}
+
+
+.svg {
+
+}
+
+.element {
+    border-color: var(--blue);
+    background-color: var(--light-blue);
+    padding: 10px;
+    margin: 15px;
+    order: 2;
+}
+
+#id-list {
+    display: grid;
+}
+.element >*> input[type="checkbox"]:checked {
+    scale: 1;
+    animation: 1s scale;
+    order: 15;
+}
+.element >*> input[type="checkbox"]:not(:checked) {
+    scale: 1;
+    order: 5;
+}
+.element >*> input[type="checkbox"] {
+    border-radius: 20px;
+}
+
+@keyframes turn {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+@keyframes scale {
+    50% {
+        scale: 2;
+    }
+}
