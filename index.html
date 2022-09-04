@@ -11,7 +11,10 @@
         <hr>
         <section>
             <h1>Todo List</h1>
-            <input type="text" id="input-add" placeholder="Enter your task">
+            <button class="trash" ondragover="remove_drag()">
+                <img src="static/images/trash-fill.svg" alt="trash" class="svg">
+            </button>
+            <input type="text" id="input-add" placeholder="Enter your task" onchange="add()">
             <button id="btn-add" class="btn" onclick="add()">
                 <strong>
                     Add

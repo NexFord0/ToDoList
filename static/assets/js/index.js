@@ -1,5 +1,7 @@
 console.log("index.js");
 
+let d = null;
+
 function add() {
     let text = document.getElementById("input-add").value.trim();
     for (let e of document.getElementsByClassName("element-title")) {
@@ -14,16 +16,16 @@ function add() {
     document.getElementById("list").innerHTML += `
 
 
-<div class="element border">
+<div class="element border" draggable="true" ondrag="d=this" ondragend="d=null">
     <div class="text-left">
-        <input type="checkbox" class="" onclick="">
+        <input type="checkbox" class="">
         <span name="text" class="element-title span-text">${text}</span>
     </div>
     <div class="text-right">
         <button onclick="edit(this)" class="edit">
             <img src="static/images/pencil-square.svg" alt="edit" class="svg">
         </button>
-        <button onclick="if(window.confirm('Are you sure you want to delete this item ?')){this.parentNode.parentNode.remove()}" class="trash">
+        <button onclick="remove(this)" class="trash">
             <img src="static/images/trash-fill.svg" alt="trash" class="svg">
         </button>
     </div>
@@ -31,6 +33,26 @@ function add() {
 
 
     `.trim();
+}
+
+function remove_drag() {
+    if (d !== null) {
+        let div = d;
+        div.style.animation = "1s delete";
+        setTimeout(function () {
+            div.remove();
+        }, 1000);
+    }
+}
+
+function remove(btn) {
+    if(window.confirm('Are you sure you want to delete this item ?')){
+        let parent = btn.parentNode.parentNode;
+        parent.style.animation = "1s delete";
+        setTimeout(function () {
+            parent.remove();
+        }, 1000);
+    }
 }
 
 function edit(btn) {

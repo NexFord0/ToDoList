@@ -87,6 +87,7 @@ button:hover {
 .trash {
     --primary: var(--red);
 }
+.trash
 
 .edit {
      --primary: var(--green);
@@ -129,5 +130,12 @@ button:hover {
 @keyframes scale {
     50% {
         scale: 2;
+    }
+}
+
+@keyframes delete {
+    100% {
+        scale: 0.01;
+        rotate: 10turn;
     }
 }
