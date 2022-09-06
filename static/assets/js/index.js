@@ -6,19 +6,15 @@ function init() {
     const json = localStorage.getItem("todolist");
     let arr_elements = JSON.parse(json);
     for (let element of arr_elements) {
-        add_element(element);
+        add_element(element.title, element.valid);
     }
 }
 
-function add_element(element) {
-    const title = element.title;
-    const check = (element.valid) ? "checked" : "";
+function add_element(title, valid) {
+    const check = valid ? "check" : "";
     document.getElementById("list").innerHTML += `
-
-
-<div class="element border" draggable="true" ondrag="d=this"  ondragend="d=null">
+<div class="element border ${check}" draggable="true" ondrag="d=this"  ondragend="d=null" onclick="check(this)">
     <div class="text-left">
-        <input type="checkbox" onchange="save_todolist();this.style.animation='1s scale';" ${check}>
         <span name="text" class="element-title span-text">${title}</span>
     </div>
     <div class="text-right">
@@ -30,13 +26,22 @@ function add_element(element) {
         </button>
     </div>
 </div>
-
-
     `.trim();
 }
 
+function check(element) {
+    if (element.classList.contains("check")){
+        element.classList.remove("check");
+    } else {
+        element.classList.add("check");
+    }
+    save_todolist();
+}
+
 function add() {
-    let text = document.getElementById("input-add").value.trim();
+    const input = document.getElementById("input-add");
+    let text = input.value.trim();
+    // input.value = null
     if (text.length === 0) {
         return;
     }
@@ -49,27 +54,8 @@ function add() {
             }
         }
     }
-    document.getElementById("list").innerHTML += `
-
-
-<div class="element border" draggable="true" ondrag="d=this"  ondragend="d=null">
-    <div class="text-left">
-        <input type="checkbox" onchange="save_todolist();this.style.animation='1s scale';">
-        <span name="text" class="element-title span-text">${text}</span>
-    </div>
-    <div class="text-right">
-        <button onclick="edit(this)" class="edit">
-            <img src="static/images/pencil-square.svg" alt="edit" class="svg">
-        </button>
-        <button onclick="remove(this)" class="trash">
-            <img src="static/images/trash-fill.svg" alt="trash" class="svg">
-        </button>
-    </div>
-</div>
-
-
-    `.trim();
-    save_todolist()
+    add_element(text, false);
+    save_todolist();
 }
 
 function remove_drag() {
@@ -105,14 +91,27 @@ function save_todolist() {
     let arr_elements = [];
     for (let element of elements) {
         const title = element.querySelector("span").innerText.trim();
-        const check = element.querySelector("input").checked;
+        const check = element.classList.contains("check");
         arr_elements.push({
             title: title,
             valid: check
         });
     }
+    arr_elements.sort(function  compare(a, b) {
+        if (a.title < b.title)
+            return -1;
+        if (a.title > b.title)
+            return 1;
+        return 0;
+    });
+    arr_elements.sort(function compare(a) {
+        if (a.valid)
+            return 1;
+        return -1;
+    });
     const json = JSON.stringify(arr_elements)
     localStorage.setItem("todolist", json);
+    window.location = window.location.href;
 }
 
 function remove_all() {

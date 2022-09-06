@@ -18,15 +18,15 @@ html, body {
     margin: 0;
     padding: 0;
 }
-
 body {
     display: flex;
     justify-content: center;
 }
+
 main {
-    min-height: 100vh;
+    min-height: 75vh;
     height: max-content;
-    padding-top: 10%;
+    padding-top: 25vh;
     background-color: #EEEEEE;
     width: 80%;
 }
@@ -97,14 +97,16 @@ button:hover {
 }
 
 .element {
-    border-color: var(--blue);
+    border-color: var(--light-blue);
     background-color: var(--light-blue);
     padding: 10px;
     margin: 15px;
-    order: 2;
+}
+.check {
+    border-color: var(--blue);
 }
 
-#id-list {
+#list {
     display: grid;
 }
 
