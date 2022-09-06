@@ -8,6 +8,13 @@ function init() {
     for (let element of arr_elements) {
         add_element(element.title, element.valid);
     }
+    if (arr_elements.length === 0) {
+        document.getElementById("list").innerHTML += `
+            <div class="text-center border hide">
+                <h1>You have not defined any task</h1>
+            </div>
+        `;
+    }
 }
 
 function add_element(title, valid) {
@@ -21,7 +28,7 @@ function add_element(title, valid) {
         <button onclick="edit(this)" class="edit">
             <img src="static/images/pencil-square.svg" alt="edit" class="svg">
         </button>
-        <button onclick="remove(this)" class="trash">
+        <button onclick="remove_element(this)" class="trash">
             <img src="static/images/trash-fill.svg" alt="trash" class="svg">
         </button>
     </div>
@@ -69,7 +76,7 @@ function remove_drag() {
     }
 }
 
-function remove(btn) {
+function remove_element(btn) {
     if(window.confirm('Are you sure you want to delete this item ?')){
         let parent = btn.parentNode.parentNode;
         parent.style.animation = "1s delete";
@@ -117,4 +124,23 @@ function save_todolist() {
 function remove_all() {
     document.getElementById("list").innerHTML = "";
     save_todolist();
+}
+
+function filter(name) {
+    const elements = document.getElementById("list").getElementsByClassName("element");
+    let nb_find = 0;
+    for (let element of elements) {
+        const title = element.querySelector("span").innerText.trim();
+        element.classList.remove("hide-element");
+        if (!title.includes(name)) {
+            element.classList.add("hide-element");
+        } else {
+            nb_find++;
+        }
+    }
+    let filter = document.getElementById("filter");
+    filter.classList.add("hide");
+    if (nb_find === 0) {
+        filter.classList.remove("hide");
+    }
 }

@@ -35,7 +35,7 @@ section {
     padding: 10px;
     /*border: 2px solid var(--primary);*/
 }
-.hide {
+.hide, .hide-element {
     display: none;
 }
 .text-center {
@@ -96,15 +96,16 @@ button:hover {
 
 }
 
-.element {
+.check {
+    border-color: var(--blue);
+}
+.element, #filter {
     border-color: var(--light-blue);
     background-color: var(--light-blue);
     padding: 10px;
     margin: 15px;
 }
-.check {
-    border-color: var(--blue);
-}
+
 
 #list {
     display: grid;
