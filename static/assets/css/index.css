@@ -107,18 +107,7 @@ button:hover {
 #id-list {
     display: grid;
 }
-.element >*> input[type="checkbox"]:checked {
-    scale: 1;
-    animation: 1s scale;
-    order: 15;
-}
-.element >*> input[type="checkbox"]:not(:checked) {
-    scale: 1;
-    order: 5;
-}
-.element >*> input[type="checkbox"] {
-    border-radius: 20px;
-}
+
 
 @keyframes turn {
     100% {

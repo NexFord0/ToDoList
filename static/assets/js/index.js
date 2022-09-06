@@ -3,7 +3,36 @@ console.log("index.js");
 let d = null;
 
 function init() {
-    document.getElementById("list").innerHTML = localStorage.getItem("todolist");
+    const json = localStorage.getItem("todolist");
+    let arr_elements = JSON.parse(json);
+    for (let element of arr_elements) {
+        add_element(element);
+    }
+}
+
+function add_element(element) {
+    const title = element.title;
+    const check = (element.valid) ? "checked" : "";
+    document.getElementById("list").innerHTML += `
+
+
+<div class="element border" draggable="true" ondrag="d=this"  ondragend="d=null">
+    <div class="text-left">
+        <input type="checkbox" onchange="save_todolist();this.style.animation='1s scale';" ${check}>
+        <span name="text" class="element-title span-text">${title}</span>
+    </div>
+    <div class="text-right">
+        <button onclick="edit(this)" class="edit">
+            <img src="static/images/pencil-square.svg" alt="edit" class="svg">
+        </button>
+        <button onclick="remove(this)" class="trash">
+            <img src="static/images/trash-fill.svg" alt="trash" class="svg">
+        </button>
+    </div>
+</div>
+
+
+    `.trim();
 }
 
 function add() {
@@ -25,7 +54,7 @@ function add() {
 
 <div class="element border" draggable="true" ondrag="d=this"  ondragend="d=null">
     <div class="text-left">
-        <input type="checkbox" class="">
+        <input type="checkbox" onchange="save_todolist();this.style.animation='1s scale';">
         <span name="text" class="element-title span-text">${text}</span>
     </div>
     <div class="text-right">
@@ -72,14 +101,21 @@ function edit(btn) {
 }
 
 function save_todolist() {
-    localStorage.setItem("todolist", document.getElementById("list").innerHTML);
+    const elements = document.getElementById("list").getElementsByClassName("element");
+    let arr_elements = [];
+    for (let element of elements) {
+        const title = element.querySelector("span").innerText.trim();
+        const check = element.querySelector("input").checked;
+        arr_elements.push({
+            title: title,
+            valid: check
+        });
+    }
+    const json = JSON.stringify(arr_elements)
+    localStorage.setItem("todolist", json);
 }
 
 function remove_all() {
     document.getElementById("list").innerHTML = "";
     save_todolist();
-}
-
-function test() {
-    document.body.innerHTML += ``;
 }
