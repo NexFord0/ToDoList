@@ -11,7 +11,7 @@
         <hr>
         <section>
             <h1>Todo List</h1>
-            <button class="trash" ondragover="remove_drag()">
+            <button class="trash" ondragover="remove_drag()" onclick="remove_all()">
                 <img src="static/images/trash-fill.svg" alt="trash" class="svg">
             </button>
             <input type="text" id="input-add" placeholder="Enter your task" onchange="add()">
@@ -30,11 +30,9 @@
         </section>
     </main>
     <footer>
-<!--        <img src="static/images/todo.png" alt="todo">-->
+        <script>
+            init();
+        </script>
     </footer>
-    <script>
-        document.getElementById("btn-add").click();
-        // test();
-    </script>
 </body>
 </html>

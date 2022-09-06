@@ -2,8 +2,15 @@ console.log("index.js");
 
 let d = null;
 
+function init() {
+    document.getElementById("list").innerHTML = localStorage.getItem("todolist");
+}
+
 function add() {
     let text = document.getElementById("input-add").value.trim();
+    if (text.length === 0) {
+        return;
+    }
     for (let e of document.getElementsByClassName("element-title")) {
         if (e.innerText.trim() === text) {
             if (window.confirm(`This task is already exist ! Click on "OK" to add.`)) {
@@ -16,7 +23,7 @@ function add() {
     document.getElementById("list").innerHTML += `
 
 
-<div class="element border" draggable="true" ondrag="d=this" ondragend="d=null">
+<div class="element border" draggable="true" ondrag="d=this"  ondragend="d=null">
     <div class="text-left">
         <input type="checkbox" class="">
         <span name="text" class="element-title span-text">${text}</span>
@@ -33,6 +40,7 @@ function add() {
 
 
     `.trim();
+    save_todolist()
 }
 
 function remove_drag() {
@@ -41,6 +49,7 @@ function remove_drag() {
         div.style.animation = "1s delete";
         setTimeout(function () {
             div.remove();
+            save_todolist();
         }, 1000);
     }
 }
@@ -51,6 +60,7 @@ function remove(btn) {
         parent.style.animation = "1s delete";
         setTimeout(function () {
             parent.remove();
+            save_todolist();
         }, 1000);
     }
 }
@@ -58,8 +68,17 @@ function remove(btn) {
 function edit(btn) {
     let text = prompt(btn.parentNode.parentNode.querySelector(".span-text").innerText.trim()).trim();
     btn.parentNode.parentNode.querySelector("span").innerText = text.length > 0 ? text : btn.parentNode.parentNode.querySelector("span").innerText;
+    save_todolist()
 }
 
+function save_todolist() {
+    localStorage.setItem("todolist", document.getElementById("list").innerHTML);
+}
+
+function remove_all() {
+    document.getElementById("list").innerHTML = "";
+    save_todolist();
+}
 
 function test() {
     document.body.innerHTML += ``;

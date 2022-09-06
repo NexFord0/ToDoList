@@ -8,7 +8,6 @@
     --green: #11a811;
     --purple: #5c11cc;
     --transparent: rgba(0, 0, 0, 0%);
-    --duo: linear-gradient(#e66465, #9198e5);
 }
 
 * {
@@ -87,7 +86,6 @@ button:hover {
 .trash {
     --primary: var(--red);
 }
-.trash
 
 .edit {
      --primary: var(--green);
@@ -136,6 +134,6 @@ button:hover {
 @keyframes delete {
     100% {
         scale: 0.01;
-        rotate: 10turn;
+        rotate: 1turn;
     }
 }
