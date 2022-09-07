@@ -15,17 +15,19 @@ function init() {
             </div>
         `;
     }
+    const input = document.getElementById("input-add");
+
 }
 
 function add_element(title, valid) {
     const check = valid ? "check" : "";
     document.getElementById("list").innerHTML += `
-<div class="element border ${check}" draggable="true" ondrag="d=this"  ondragend="d=null" onclick="check(this)">
+<div class="element border ${check}" draggable="true" ondrag="d=this"  ondragend="d=null" onclick="check_element(this)">
     <div class="text-left">
         <span name="text" class="element-title span-text">${title}</span>
     </div>
     <div class="text-right">
-        <button onclick="edit(this)" class="edit">
+        <button onclick="edit_element(this)" class="edit">
             <img src="static/images/pencil-square.svg" alt="edit" class="svg">
         </button>
         <button onclick="remove_element(this)" class="trash">
@@ -36,7 +38,7 @@ function add_element(title, valid) {
     `.trim();
 }
 
-function check(element) {
+function check_element(element) {
     if (element.classList.contains("check")){
         element.classList.remove("check");
     } else {
@@ -45,7 +47,7 @@ function check(element) {
     save_todolist();
 }
 
-function add() {
+function add_element_input() {
     const input = document.getElementById("input-add");
     let text = input.value.trim();
     // input.value = null
@@ -87,7 +89,7 @@ function remove_element(btn) {
     }
 }
 
-function edit(btn) {
+function edit_element(btn) {
     let text = prompt(btn.parentNode.parentNode.querySelector(".span-text").innerText.trim()).trim();
     btn.parentNode.parentNode.querySelector("span").innerText = text.length > 0 ? text : btn.parentNode.parentNode.querySelector("span").innerText;
     save_todolist()
@@ -143,4 +145,32 @@ function filter(name) {
     if (nb_find === 0) {
         filter.classList.remove("hide");
     }
+}
+
+
+document.onkeydown=function (e){
+    if(e.key === 'Enter') {
+        add_element_input();
+    }
+}
+
+function test() {
+    let list = document.getElementById("list");
+    list.addEventListener("click", (e) => {
+       // if (e.target.matches(".trash>img") || e.target.matches(".trash")) {
+       //     remove_element(list.querySelector(".trash"));
+       //     e.stopPropagation();
+       // }
+        // if (e.target.matches(".edit>img") || e.target.matches(".edit")) {
+        //     edit_element(list.querySelector(".edit"));
+        //     e.stopPropagation();
+        // }
+        if (e.target.matches(".element")) {
+            console.log("stop");
+            e.stopPropagation();
+        }
+    }, {
+        capture: true
+    });
+
 }

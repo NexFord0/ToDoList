@@ -14,8 +14,8 @@
             <button class="trash" ondragover="remove_drag()" onclick="remove_all()">
                 <img src="static/images/trash-fill.svg" alt="trash" class="svg">
             </button>
-            <input type="text" id="input-add" placeholder="Enter your task" onchange="add()" onkeyup="filter(this.value.trim())">
-            <button id="btn-add" class="btn" onclick="add()">
+            <input type="text" id="input-add" placeholder="Enter your task" onkeyup="filter(this.value.trim())">
+            <button id="btn-add" class="btn" onclick="add_element_input()" >
                 <strong>
                     Add
                 </strong>
@@ -37,6 +37,7 @@
     <footer>
         <script>
             init();
+            test();
         </script>
     </footer>
 </body>
