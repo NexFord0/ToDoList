@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <link href="static/images/todolist-favicon.svg" rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="static/assets/css/index.css">
     <script src="static/assets/js/index.js"></script>
 </head>
@@ -14,7 +15,7 @@
             <button class="trash" ondragover="remove_drag()" onclick="remove_all()">
                 <img src="static/images/trash-fill.svg" alt="trash" class="svg">
             </button>
-            <input type="text" id="input-add" placeholder="Enter your task" onkeyup="filter(this.value.trim())">
+            <input type="text" aria-label="add" id="input-add" placeholder="Enter your task" onkeyup="filter(this.value.trim())">
             <button id="btn-add" class="btn" onclick="add_element_input()" >
                 <img src="static/images/add-black.svg" alt="add" class="svg">
             </button>

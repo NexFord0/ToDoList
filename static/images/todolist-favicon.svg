@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <polyline stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" points="23 34 30 41 43 28" style="stroke: rgb(19, 99, 190); fill: rgb(199, 224, 229);"/>
+  <polyline stroke-width="2" stroke-miterlimit="10" points="23 8 10 8 10 63 54 63 54 8 41 8" style="stroke: rgb(19, 99, 190); fill: rgb(199, 224, 229);"/>
+  <polygon stroke-width="2" stroke-miterlimit="10" points="36 5 36 1 28 1 28 5 24 5 22 13 42 13 40 5" style="stroke: rgb(19, 99, 190); fill: rgb(199, 224, 229);"/>
+  <polyline stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" points="23 34 30 41 43 28" style="stroke: rgb(19, 99, 190);" fill="none"/>
+</svg>
