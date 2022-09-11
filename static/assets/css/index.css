@@ -24,9 +24,9 @@ body {
 }
 
 main {
-    min-height: 75vh;
+    min-height: calc(100vh - 15vw);
     height: max-content;
-    padding-top: 25vh;
+    padding-top: 15vw;
     background-color: #EEEEEE;
     width: 80%;
 }
