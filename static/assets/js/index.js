@@ -5,6 +5,9 @@ let d = null;
 function init() {
     const json = localStorage.getItem("todolist");
     let arr_elements = JSON.parse(json);
+    if (arr_elements.length === 0) {
+        document.getElementById("empty").classList.remove("hide");
+    }
     for (let element of arr_elements) {
         add_element(element.title, element.valid);
     }
@@ -15,8 +18,6 @@ function init() {
             </div>
         `;
     }
-    const input = document.getElementById("input-add");
-
 }
 
 function add_element(title, valid) {
@@ -134,6 +135,12 @@ function remove_all() {
 function filter(name) {
     const elements = document.getElementById("list").getElementsByClassName("element");
     let nb_find = 0;
+    if (elements.length === 0) {
+        document.getElementById("empty").classList.remove("hide");
+        return;
+    } else {
+        document.getElementById("empty").classList.add("hide");
+    }
     for (let element of elements) {
         const title = element.querySelector("span").innerText.trim();
         element.classList.remove("hide-element");

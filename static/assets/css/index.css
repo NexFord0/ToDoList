@@ -97,7 +97,7 @@ button:hover {
     width: 16px;
 }
 
-.element, #filter {
+.element, #filter, #empty {
     border-color: var(--light-blue);
     background-color: var(--light-blue);
     padding: 10px;
