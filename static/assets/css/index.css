@@ -93,7 +93,8 @@ button:hover {
 
 
 .svg {
-
+    height: 16px;
+    width: 16px;
 }
 
 .element, #filter {

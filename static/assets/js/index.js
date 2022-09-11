@@ -91,8 +91,11 @@ function remove_element(btn) {
 
 function edit_element(btn) {
     let text = prompt(btn.parentNode.parentNode.querySelector(".span-text").innerText.trim()).trim();
-    btn.parentNode.parentNode.querySelector("span").innerText = text.length > 0 ? text : btn.parentNode.parentNode.querySelector("span").innerText;
-    save_todolist()
+    if (text.length === 0) {
+        return;
+    }
+    btn.parentNode.parentNode.querySelector("span").innerText = text;
+    save_todolist();
 }
 
 function save_todolist() {
@@ -157,17 +160,13 @@ document.onkeydown=function (e){
 function test() {
     let list = document.getElementById("list");
     list.addEventListener("click", (e) => {
-       // if (e.target.matches(".trash>img") || e.target.matches(".trash")) {
-       //     remove_element(list.querySelector(".trash"));
-       //     e.stopPropagation();
-       // }
-        // if (e.target.matches(".edit>img") || e.target.matches(".edit")) {
-        //     edit_element(list.querySelector(".edit"));
-        //     e.stopPropagation();
-        // }
-        if (e.target.matches(".element")) {
-            console.log("stop");
+        if (e.target.matches(".trash>img") || e.target.matches(".trash")) {
             e.stopPropagation();
+            remove_element(list.querySelector(".trash"));
+        }
+        if (e.target.matches(".edit>img") || e.target.matches(".edit")) {
+            e.stopPropagation();
+            edit_element(list.querySelector(".edit"));
         }
     }, {
         capture: true
