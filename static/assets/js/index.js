@@ -28,10 +28,10 @@ function add_element(title, valid) {
         <span name="text" class="element-title span-text">${title}</span>
     </div>
     <div class="text-right">
-        <button onclick="edit_element(this)" class="edit">
+        <button class="edit">
             <img src="static/images/pencil-square.svg" alt="edit" class="svg">
         </button>
-        <button onclick="remove_element(this)" class="trash">
+        <button class="trash">
             <img src="static/images/trash-fill.svg" alt="trash" class="svg">
         </button>
     </div>
@@ -80,7 +80,8 @@ function remove_drag() {
 }
 
 function remove_element(btn) {
-    if(window.confirm('Are you sure you want to delete this item ?')){
+    const text = btn.parentNode.parentNode.querySelector(".span-text").innerText.trim();
+    if(window.confirm(`Are you sure you want to delete "${text}" ?`)){
         let parent = btn.parentNode.parentNode;
         parent.style.animation = "1s delete";
         setTimeout(function () {
@@ -91,11 +92,17 @@ function remove_element(btn) {
 }
 
 function edit_element(btn) {
-    let text = prompt(btn.parentNode.parentNode.querySelector(".span-text").innerText.trim()).trim();
+    let span = btn.parentNode.parentNode.querySelector(".span-text");
+    const title = span.innerText.trim();
+    let text = prompt(title);
+    if (text === null) {
+        return;
+    }
+    text = text.trim();
     if (text.length === 0) {
         return;
     }
-    btn.parentNode.parentNode.querySelector("span").innerText = text;
+    span.innerText = text;
     save_todolist();
 }
 
@@ -167,13 +174,20 @@ document.onkeydown=function (e){
 function test() {
     let list = document.getElementById("list");
     list.addEventListener("click", (e) => {
-        if (e.target.matches(".trash>img") || e.target.matches(".trash")) {
-            e.stopPropagation();
-            remove_element(list.querySelector(".trash"));
+        if (e.target.matches(".trash>img")) {
+            remove_element(e.target.parentNode);
         }
-        if (e.target.matches(".edit>img") || e.target.matches(".edit")) {
+        if (e.target.matches(".trash")) {
+            remove_element(e.target);
+        }
+        if (e.target.matches(".edit>img")) {
+            edit_element(e.target.parentNode);
+        }
+        if (e.target.matches(".edit")) {
+            edit_element(e.target);
+        }
+        if (e.target.matches(".trash>img") || e.target.matches(".trash") || e.target.matches(".edit>img") || e.target.matches(".edit")) {
             e.stopPropagation();
-            edit_element(list.querySelector(".edit"));
         }
     }, {
         capture: true
