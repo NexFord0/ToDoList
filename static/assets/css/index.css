@@ -127,6 +127,6 @@ button:hover {
 @keyframes delete {
     100% {
         scale: 0.01;
-        rotate: 1turn;
+        transform: rotateY(1turn);
     }
 }
