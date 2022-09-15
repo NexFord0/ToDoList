@@ -7,16 +7,11 @@ function init() {
     let arr_elements = JSON.parse(json);
     if (arr_elements.length === 0) {
         document.getElementById("empty").classList.remove("hide");
+        return;
     }
+    document.getElementById("list").innerHTML = null;
     for (let element of arr_elements) {
         add_element(element.title, element.valid);
-    }
-    if (arr_elements.length === 0) {
-        document.getElementById("list").innerHTML += `
-            <div class="text-center border hide">
-                <h1>You have not defined any task</h1>
-            </div>
-        `;
     }
 }
 
@@ -25,7 +20,7 @@ function add_element(title, valid) {
     document.getElementById("list").innerHTML += `
 <div class="element border ${check}" draggable="true" ondrag="d=this"  ondragend="d=null" onclick="check_element(this)">
     <div class="text-left">
-        <span name="text" class="element-title span-text">${title}</span>
+        <span class="element-title span-text">${title}</span>
     </div>
     <div class="text-right">
         <button class="edit">
@@ -131,7 +126,7 @@ function save_todolist() {
     });
     const json = JSON.stringify(arr_elements)
     localStorage.setItem("todolist", json);
-    window.location = window.location.href;
+    init();
 }
 
 function remove_all() {
