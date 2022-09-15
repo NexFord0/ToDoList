@@ -10,6 +10,7 @@ function init() {
         return;
     }
     document.getElementById("list").innerHTML = null;
+    document.getElementById("input-add").value = null;
     for (let element of arr_elements) {
         add_element(element.title, element.valid);
     }
