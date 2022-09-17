@@ -5,6 +5,7 @@ let d = null;
 function init() {
     const json = localStorage.getItem("todolist");
     let arr_elements = JSON.parse(json);
+    document.getElementById("filter").classList.add("hide");
     if (arr_elements.length === 0) {
         document.getElementById("empty").classList.remove("hide");
         return;
