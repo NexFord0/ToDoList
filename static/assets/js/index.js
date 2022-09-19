@@ -10,6 +10,7 @@ function init() {
         document.getElementById("empty").classList.remove("hide");
         return;
     }
+    document.getElementById("empty").classList.add("hide");
     document.getElementById("list").innerHTML = null;
     document.getElementById("input-add").value = null;
     for (let element of arr_elements) {
