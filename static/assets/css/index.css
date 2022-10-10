@@ -24,9 +24,9 @@ body {
 }
 
 main {
-    min-height: calc(100vh - 15vw);
+    min-height: calc(100vh - 10vw);
     height: max-content;
-    padding-top: 15vw;
+    padding-top: 10vw;
     background-color: #EEEEEE;
     width: 80%;
 }
@@ -41,18 +41,18 @@ section {
 .text-center {
     text-align: center;
 }
-.text-left {
-    text-align: left;
+h1 {
+    font-size: xxx-large;
 }
-.text-right {
-    text-align: right;
+.libeled {
+    margin: auto;
+    font-size: x-large;
 }
-.right {
-    right: 0;
+.action-button {
+    position: relative;
+    right: 10px;
 }
-.min-x {
-    width: max-content;
-}
+
 .d-flex {
     display: flex;
 }
@@ -100,8 +100,15 @@ button:hover {
 .element, #filter, #empty {
     border-color: var(--light-blue);
     background-color: var(--light-blue);
-    padding: 10px;
     margin: 15px;
+}
+.element {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+#filter, #empty {
+    padding: 20px;
 }
 .check {
     border-color: var(--blue);
@@ -128,5 +135,11 @@ button:hover {
     100% {
         scale: 0.01;
         transform: rotateY(1turn);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    main {
+        min-width: 100%;
     }
 }

@@ -22,10 +22,10 @@ function add_element(title, valid) {
     const check = valid ? "check" : "";
     document.getElementById("list").innerHTML += `
 <div class="element border ${check}" draggable="true" ondrag="d=this"  ondragend="d=null" onclick="check_element(this)">
-    <div class="text-left">
+    <div class="libeled">
         <span class="element-title span-text">${title}</span>
     </div>
-    <div class="text-right">
+    <div class="action-button">
         <button class="edit">
             <img src="static/images/pencil-square.svg" alt="edit" class="svg">
         </button>
