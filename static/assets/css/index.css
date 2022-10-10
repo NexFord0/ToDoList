@@ -35,7 +35,7 @@ section {
     padding: 10px;
     /*border: 2px solid var(--primary);*/
 }
-.hide, .hide-element {
+.hide {
     display: none;
 }
 .text-center {
@@ -117,6 +117,10 @@ button:hover {
 
 #list {
     display: grid;
+}
+
+.hide-element {
+    display: none;
 }
 
 

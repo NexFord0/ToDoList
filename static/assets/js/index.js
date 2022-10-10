@@ -53,6 +53,7 @@ function add_element_input() {
     if (text.length === 0) {
         return;
     }
+    text = firstToUpperCase(text);
     for (let e of document.getElementsByClassName("element-title")) {
         if (e.innerText.trim() === text) {
             if (window.confirm(`This task is already exist ! Click on "OK" to add.`)) {
@@ -147,9 +148,9 @@ function filter(name) {
         document.getElementById("empty").classList.add("hide");
     }
     for (let element of elements) {
-        const title = element.querySelector("span").innerText.trim();
+        const title = element.querySelector("span").innerText.trim().toUpperCase();
         element.classList.remove("hide-element");
-        if (!title.includes(name)) {
+        if (!title.includes(name.toUpperCase())) {
             element.classList.add("hide-element");
         } else {
             nb_find++;
@@ -190,5 +191,8 @@ function test() {
     }, {
         capture: true
     });
+}
 
+function firstToUpperCase(text) {
+    return text.replace(text[0], text[0].toUpperCase());
 }
