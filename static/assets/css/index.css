@@ -67,7 +67,6 @@ h1 {
 
 #input-add, button {
     padding: 10px;
-    font-size: large;
     border-radius: 10px;
     border: solid ;
 }
@@ -75,6 +74,16 @@ h1 {
     height: 32px;
     margin-left: 5px;
     margin-right: 5px;
+    text-align: center;
+    font-size: x-large;
+
+    /*min-inline-size: 350px;*/
+    /*max-inline-size: 1000px;*/
+    /*inline-size: auto;*/
+    /*size: 30px;*/
+    /*min-width: 200px;*/
+    /*max-width: 1000px;*/
+    /*width: auto;*/
 }
 .center {
     justify-content: center;

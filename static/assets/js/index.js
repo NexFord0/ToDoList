@@ -137,6 +137,16 @@ function save_todolist() {
 }
 
 function remove_all() {
+    const input = document.getElementById("input-add");
+    if (input.value.length !== 0) {
+        input.value = null;
+        filter("")
+        return;
+    }
+    const elements = document.getElementById("list").getElementsByClassName("element");
+    if (elements.length === 0) {
+        return;
+    }
     if (window.confirm(`Are you sure you want to delete all tasks ?`)) {
         document.getElementById("list").innerHTML = "";
         save_todolist();
