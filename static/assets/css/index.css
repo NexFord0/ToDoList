@@ -51,7 +51,7 @@ h1 {
     right: 25px;
 }
 .element-title {
-    max-width: 75%;
+    max-width: calc(100% - 2*130px);
     display: inline-block;
     text-align: justify;
 }
