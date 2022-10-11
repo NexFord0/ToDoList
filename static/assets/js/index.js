@@ -70,11 +70,14 @@ function add_element_input() {
 function remove_drag() {
     if (d !== null) {
         let div = d;
-        div.style.animation = "1s delete";
-        setTimeout(function () {
-            div.remove();
-            save_todolist();
-        }, 1000);
+        const text = div.querySelector("span").innerText.trim();
+        if (window.confirm(`Are you sure you want to delete "${text}" ?`)) {
+            div.style.animation = "1s delete";
+            setTimeout(function () {
+                div.remove();
+                save_todolist();
+            }, 1000);
+        }
     }
 }
 
@@ -93,7 +96,7 @@ function remove_element(btn) {
 function edit_element(btn) {
     let span = btn.parentNode.parentNode.querySelector(".span-text");
     const title = span.innerText.trim();
-    let text = prompt(title);
+    let text = prompt("Edit : "+title, title);
     if (text === null) {
         return;
     }
@@ -134,8 +137,10 @@ function save_todolist() {
 }
 
 function remove_all() {
-    document.getElementById("list").innerHTML = "";
-    save_todolist();
+    if (window.confirm(`Are you sure you want to delete all tasks ?`)) {
+        document.getElementById("list").innerHTML = "";
+        save_todolist();
+    }
 }
 
 function filter(name) {
