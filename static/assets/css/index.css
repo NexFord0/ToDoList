@@ -51,7 +51,7 @@ h1 {
     right: 25px;
 }
 .element-title {
-    max-width: calc(100% - 2*130px);
+    max-width: calc(100% - 2*2*65px);
     display: inline-block;
     text-align: justify;
 }
@@ -76,14 +76,6 @@ h1 {
     margin-right: 5px;
     text-align: center;
     font-size: x-large;
-
-    /*min-inline-size: 350px;*/
-    /*max-inline-size: 1000px;*/
-    /*inline-size: auto;*/
-    /*size: 30px;*/
-    /*min-width: 200px;*/
-    /*max-width: 1000px;*/
-    /*width: auto;*/
 }
 .center {
     justify-content: center;
@@ -127,6 +119,18 @@ button:hover {
     display: flex;
     align-items: center;
 }
+
+.long-text > .action-button {
+    display: grid;
+    grid-gap: 5px;
+}
+.long-text > div > .element-title {
+    max-width: calc(100% - 2*65px);
+}
+.long-text {
+    min-height: 121px;
+}
+
 #filter, #empty {
     padding: 20px;
 }
@@ -156,3 +160,4 @@ button:hover {
         min-width: 100%;
     }
 }
+

@@ -35,6 +35,12 @@ function add_element(title, valid) {
     </div>
 </div>
     `.trim();
+    const elements = document.getElementById("list").getElementsByClassName("element");
+    let element = elements[elements.length-1];
+    console.log(element)
+    if (element.offsetHeight > 130) {
+        element.classList.add("long-text");
+    }
 }
 
 function check_element(element) {
