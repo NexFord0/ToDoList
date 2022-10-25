@@ -126,16 +126,15 @@ function save_todolist() {
         });
     }
     arr_elements.sort(function  compare(a, b) {
+        if (a.valid && !b.valid)
+            return 1;
+        if (!a.valid && b.valid)
+            return -1;
         if (a.title < b.title)
             return -1;
         if (a.title > b.title)
             return 1;
         return 0;
-    });
-    arr_elements.sort(function compare(a) {
-        if (a.valid)
-            return 1;
-        return -1;
     });
     const json = JSON.stringify(arr_elements)
     localStorage.setItem("todolist", json);
